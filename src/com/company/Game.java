@@ -3,20 +3,20 @@ package com.company;
 public class Game {
     public void game() {
 
-        Computer computer = new Computer();
+        Player computer = new Computer();
         GameField gameField = new GameField();
-        Player player = new Player();
+        Player humanPlayer = new HumanPlayer();
 
-        gameField.field();
-        boolean flagOfX = false;
-        boolean flagOfO = false;
+        boolean playerWin = false;
+        boolean computerWin = false;
 
-        while (!flagOfX || !flagOfO) {
+        while (!playerWin && !computerWin) {
             gameField.print();
-            player.player(gameField.getArr());
-            flagOfX = gameField.game(Chip.X);
-            computer.computer(gameField.getArr());
-            flagOfO = gameField.game(Chip.O);
+            humanPlayer.move(gameField.getArr());
+            playerWin = gameField.gameCheck(Chip.X);
+            computer.move(gameField.getArr());
+            computerWin = gameField.gameCheck(Chip.O);
         }
+        gameField.print();
     }
 }

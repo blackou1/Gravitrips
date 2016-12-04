@@ -5,21 +5,22 @@ public class GameField {
     private final int ARRAY_HORIZONTAL = 7;
     private Chip[][] arr;
 
-    public void field() {
+    public GameField() {
         arr = new Chip[ARRAY_VERTICAL][ARRAY_HORIZONTAL];
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 7; j++) {
+        for (int i = 0; i < ARRAY_VERTICAL; i++) {
+            for (int j = 0; j < ARRAY_HORIZONTAL; j++) {
                 arr[i][j] = Chip.EMPTY;
             }
         }
     }
 
+
     public void print() {
         System.out.println("");
         System.out.print("1 2 3 4 5 6 7");
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < ARRAY_VERTICAL; i++) {
             System.out.println(" ");
-            for (int j = 0; j < 7; j++) {
+            for (int j = 0; j < ARRAY_HORIZONTAL; j++) {
                 System.out.print(arr[i][j]);
                 System.out.print(" ");
             }
@@ -30,7 +31,7 @@ public class GameField {
         return arr;
     }
 
-    public boolean game(Chip chip) {
+    public boolean gameCheck(Chip chip) {
         return horizontalCheck(chip) || verticalCheck(chip) || diagN1(chip) || diagN2(chip) || diagN3(chip) || diagN4(chip);
     }
 
@@ -107,8 +108,8 @@ public class GameField {
 
     private boolean verticalCheck(Chip chip) {
         int X = 0;
-        for (int j = 0; j < 7; j++) {
-            for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < ARRAY_HORIZONTAL; j++) {
+            for (int i = 0; i < ARRAY_VERTICAL; i++) {
                 if (arr[i][j] == chip) {
                     X++;
                 } else {
@@ -124,8 +125,8 @@ public class GameField {
 
     private boolean horizontalCheck(Chip chip) {
         int X = 0;
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 7; j++) {
+        for (int i = 0; i < ARRAY_VERTICAL; i++) {
+            for (int j = 0; j < ARRAY_HORIZONTAL; j++) {
                 if (arr[i][j] == chip) {
                     X++;
                 } else {
